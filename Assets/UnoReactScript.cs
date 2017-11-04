@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnoReactScript : MonoBehaviour
 {
-	public List<Transform> incomingProjectiles;
+	public List<Transform> incomingYoyos;
 
 	// Use this for initialization
 	void Start ()
@@ -17,21 +17,20 @@ public class UnoReactScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
-			if(incomingProjectiles.Count > 0)
+			if(incomingYoyos.Count > 0)
 			{
 				Debug.Log("Deflected");
-				Transform transToBeRemoved = incomingProjectiles[0];
-				incomingProjectiles.RemoveAt(0);
-				Destroy(transToBeRemoved.gameObject);
+				incomingYoyos[0].GetComponent<YoyoScript>().Retract();
+				incomingYoyos.RemoveAt(0);
 			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.tag == "Projectile")
+		if(other.tag == "Yoyo")
 		{
-			incomingProjectiles.Add(other.gameObject.transform);
+			incomingYoyos.Add(other.gameObject.transform);
 		}
 	}
 }

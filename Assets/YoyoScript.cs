@@ -4,32 +4,47 @@ using UnityEngine;
 
 public class YoyoScript : MonoBehaviour
 {
+	private ConstantForce2D constForce;
+	private Rigidbody2D rb;
+	private LineRenderer lineRend;
+	private Vector2 initForce;
+	public bool isRetracting;
 	public float speed;
 	public UnoReactScript reactScript;
-	public Transform circleIndicator; 
 
-	// Use this for initialization
-	void Start () {
-		
+	void Awake ()
+	{
+		constForce = GetComponent<ConstantForce2D>();
+		rb = GetComponent<Rigidbody2D>();
+		initForce = constForce.relativeForce;
+		lineRend = GetComponentInChildren<LineRenderer>();
+		lineRend.SetPosition(0, transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		this.transform.Translate(Vector3.right * Time.deltaTime * speed);
-		Vector3 scale = circleIndicator.localScale;
-		scale.x += Time.deltaTime / (speed / 2.0f);
-		scale.y += Time.deltaTime / (speed / 2.0f);
-		circleIndicator.localScale = scale;
+		lineRend.SetPosition(1, transform.position);
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(other.tag == "Uno")
+		if(collision.collider.tag == "Uno")
 		{
 			Debug.Log("Hit");
-			reactScript.incomingProjectiles.Remove(gameObject.transform);
-			Destroy(gameObject);
+			reactScript.incomingYoyos.Remove(gameObject.transform);
+			Retract();
 		}
+		else if(collision.collider.tag == "Ali")
+		{
+			Debug.Log("Retracted");
+			gameObject.SetActive(false);
+		}
+	}
+
+	public void Retract()
+	{
+		rb.velocity = Vector2.zero;
+		constForce.relativeForce = -initForce;
 	}
 }
