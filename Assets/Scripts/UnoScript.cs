@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UnoScript : MonoBehaviour
 {
-
+	public UnoReactScript reactScript;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
-		
+		reactScript = GetComponentInChildren<UnoReactScript>();
 	}
 	
 	// Update is called once per frame
