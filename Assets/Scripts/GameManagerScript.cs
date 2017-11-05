@@ -11,7 +11,10 @@ public class GameManagerScript : MonoBehaviour
 		get { return _instance; }
 	}
 
+	public AliScript ali;
+	public Transform aliTrans;
 	public UnoScript uno;
+	public Transform unoTrans;
 
 	void Awake()
 	{
@@ -24,7 +27,12 @@ public class GameManagerScript : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		uno = GameObject.FindGameObjectWithTag("Uno").GetComponent<UnoScript>();
+		GameObject aliGO = GameObject.FindGameObjectWithTag("Ali");
+		ali = aliGO.GetComponent<AliScript>();
+		aliTrans = aliGO.transform;
+		GameObject unoGO = GameObject.FindGameObjectWithTag("Uno");
+		uno = unoGO.GetComponent<UnoScript>();
+		unoTrans = unoGO.transform;
 	}
 
 	// Use this for initialization

@@ -10,7 +10,6 @@ public class YoyoScript : MonoBehaviour
 	private Vector2 initForce;
 	public bool isRetracting;
 	public float speed;
-	private UnoReactScript reactScript;
 
 	void Awake ()
 	{
@@ -19,7 +18,7 @@ public class YoyoScript : MonoBehaviour
 		initForce = constForce.relativeForce;
 		lineRend = GetComponentInChildren<LineRenderer>();
 		lineRend.SetPosition(0, transform.position);
-		reactScript = GameObject.FindGameObjectWithTag("Uno").GetComponent<UnoReactScript>();
+		lineRend.SetPosition(1, transform.position);
 	}
 	
 	// Update is called once per frame
@@ -34,6 +33,12 @@ public class YoyoScript : MonoBehaviour
 		{
 			Debug.Log("Hit");
 			GameManagerScript.instance.uno.reactScript.incomingYoyos.Remove(transform);
+			if(++ZoomingScript.instance.zoomState >= 3)
+			{
+				ZoomingScript.instance.charChanger.stage = --GameManagerScript.instance.uno.health;
+				ZoomingScript.instance.charChanger.change();
+				ZoomingScript.instance.zoomState = 0;
+			}
 			Retract();
 		}
 		else if(collision.collider.tag == "Ali")

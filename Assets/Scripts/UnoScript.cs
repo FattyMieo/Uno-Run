@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnoScript : MonoBehaviour
 {
 	public UnoReactScript reactScript;
+	public int health = 3;
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -14,6 +17,9 @@ public class UnoScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		if(health <= 0)
+		{
+			DefeatLoadSceneScript.instance.EnablePanel();
+		}
 	}
 }

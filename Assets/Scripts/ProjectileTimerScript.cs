@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ProjectileTimerScript : MonoBehaviour
 {
+	public bool hasStarted = false;
+
 	public float timeRequired;
-	private float timePassed = 0.0f;
+	public float timePassed = 0.0f;
 
 	private Vector3 curScale;
 
@@ -13,6 +15,7 @@ public class ProjectileTimerScript : MonoBehaviour
 	void Start ()
 	{
 		curScale = transform.localScale;
+		hasStarted = false;
 	}
 	
 	// Update is called once per frame
@@ -20,8 +23,8 @@ public class ProjectileTimerScript : MonoBehaviour
 	{
 		if(timePassed < timeRequired)
 		{
-			timePassed += Time.deltaTime;
-			curScale.x = curScale.y = Mathf.Lerp(0.0f, timeRequired, timePassed / timeRequired);
+			if(hasStarted) timePassed += Time.deltaTime;
+			curScale.x = curScale.y = Mathf.Lerp(0.0f, 1.0f, timePassed / timeRequired);
 			transform.localScale = curScale;
 		}
 	}

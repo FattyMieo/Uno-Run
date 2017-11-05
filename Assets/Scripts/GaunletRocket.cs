@@ -14,6 +14,11 @@ public class GaunletRocket : MonoBehaviour {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 
+	void Start()
+	{
+		target = GameManagerScript.instance.unoTrans;
+	}
+
 	void FixedUpdate(){
 		if(timer > 0.0f)
 			timer -= Time.deltaTime;
@@ -31,11 +36,29 @@ public class GaunletRocket : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if(col.collider.tag == "Uno"){
+		if(col.collider.tag == "Uno")
+		{
+			//Particle Effects
 			smoke.transform.parent = null;
-			var main = smoke.GetComponent<ParticleSystem>();
-			main.loop = false;
-			Destroy(gameObject);
+			ParticleSystem part = smoke.GetComponent<ParticleSystem>();
+			part.loop = false;
+
+			Debug.Log("Hit");
+			GameManagerScript.instance.uno.reactScript.incomingGauntlets.Remove(transform);
+			GameManagerScript.instance.uno.reactScript.hackTimer = 0.0f;
+			if(++ZoomingScript.instance.zoomState >= 3)
+			{
+				ZoomingScript.instance.charChanger.stage = --GameManagerScript.instance.uno.health;
+				ZoomingScript.instance.charChanger.change();
+				ZoomingScript.instance.zoomState = 0;
+			}
+
+			Explode();
 		}
+	}
+
+	public void Explode()
+	{
+		Destroy(gameObject);
 	}
 }
