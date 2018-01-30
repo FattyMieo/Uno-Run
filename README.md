@@ -1,4 +1,4 @@
-# Uno-Run
+# Uno Run
 Uno Run is a game made during the SEA Game Jam 2017 within 36 hours, using Unity game engine.
 
 Game is themed to a Malaysian animated series called [Ejen Ali](https://www.youtube.com/channel/UC42ZduLx6o3Nqg04kMuMCEw).
