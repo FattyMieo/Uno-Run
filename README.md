@@ -7,7 +7,9 @@ Game is themed to a Malaysian animated series called **[Ejen Ali](https://www.y
 
 ### Credits
 Designer: [Shiki Xiong](https://www.facebook.com/shikilzx.xiong)
+
 Programmers: [Fong Jian Ping](https://fattymieo.wixsite.com/portfolio), [Omar Balfaqih](http://obalfaqih.com/)
+
 Artist: [Yap Li Chen](https://www.facebook.com/yap.lichen)
 
 ### Issues
