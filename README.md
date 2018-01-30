@@ -6,15 +6,9 @@ Game is themed to a Malaysian animated series called **[Ejen Ali](https://www.y
 [![Uno Run](https://drive.google.com/uc?export=download&id=1xlJBH1YPt5Rg4p6zE_7IHZr6tqcHqetd)](https://drive.google.com/file/d/0B8D0KMKK7musbm0zNEtGbW8xYzQ/view "Uno Run - Click to Watch!")
 
 ### Credits
-Designer
-* [Shiki Xiong](https://www.facebook.com/shikilzx.xiong)
-
-Programmers
-* [Fong Jian Ping](https://fattymieo.wixsite.com/portfolio)
-* [Omar Balfaqih](http://obalfaqih.com/)
-
-Artist
-* [Yap Li Chen](https://www.facebook.com/yap.lichen)
+Designer: [Shiki Xiong](https://www.facebook.com/shikilzx.xiong)
+Programmers: [Fong Jian Ping](https://fattymieo.wixsite.com/portfolio), [Omar Balfaqih](http://obalfaqih.com/)
+Artist: [Yap Li Chen](https://www.facebook.com/yap.lichen)
 
 ### Issues
 There are problems when building the final executable file, hence the project can only be opened with Unity.
